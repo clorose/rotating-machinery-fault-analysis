@@ -1,0 +1,22 @@
+services:
+  dev:
+    container_name: rotor-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./src:/app/src
+      - ./runs:/app/runs
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null
+
+# 추후 사용할 볼륨을 미리 정의
+volumes:
+  data:
+  src:
+  runs:
