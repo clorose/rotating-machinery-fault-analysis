@@ -402,4 +402,5 @@ zsh/
 *research_YH*
 runs/**
 models/**
-data/processed/
+data/
+documents/*.png

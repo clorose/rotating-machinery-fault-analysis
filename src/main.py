@@ -50,10 +50,14 @@ def main(args):
         console.print(f"\n[bold cyan]Training {name.upper()} model...[/bold cyan]")
         
         criterion = torch.nn.CrossEntropyLoss()
-        optimizer = torch.optim.Adam(model.parameters(), lr=config.learning_rate)
+        optimizer = torch.optim.Adam(
+            model.parameters(), 
+            lr=config.learning_rate,
+            weight_decay=0.01 # L2 regularization
+        )
         
         # 모델 학습
-        loss_values, loss_values_v = train_model(
+        loss_values, loss_values_v, train_acc_values, valid_acc_values = train_model(
             model=model,
             criterion=criterion,
             optimizer=optimizer,
